@@ -65,11 +65,11 @@
       {
         interval: 7,
         offset: 0,
-        msg: "All praise our lord and savior @Benoitdx9"
+        msg: "Le créateur de la salle est présent ! @Benoitdx9"
       }, {
         interval: 5,
         offset: 0,
-        msg: "Stay active in chat while in line. We remove AFK DJ's at the booth!"
+        msg: "Merci de rester actif dans le chat quand vous êtes inscrits dans la liste, les AFK de plus d'une heure en seront retirés!"
       }
     ];
 
@@ -369,7 +369,7 @@
     myname = me.username;
     currentversion = "1.0";
     log("TastycatBOT SuperEdit " + currentversion + " started");
-    return API.sendChat("Have no fear, " + myname + " is here!");
+    return API.sendChat("Tremblez, " + myname + " est là !");
   };
 
   populateUserData = function() {
@@ -415,7 +415,7 @@
           secsLastActive = timeSinceLastActivity / 1000;
           if (user.getWarningCount() === 0) {
             user.warn();
-            _results.push(API.sendChat("@" + user.getUser().username + ", I haven't seen you chat in about 1 hour. Are you AFK?  If you don't show activity in 4 minutes I will remove you from the booth."));
+            _results.push(API.sendChat("@" + user.getUser().username + ", Je ne t'ai pas vu dans le chat depuis 1h, es-tu AFK ? Si tu ne donnes aucune réponse tu seras retiré de la liste DJ."));
           } else if (user.getWarningCount() === 1) {
             lastWarned = user.getLastWarning();
             timeSinceLastWarning = now.getTime() - lastWarned.getTime();
@@ -423,7 +423,7 @@
             if (timeSinceLastWarning > twoMinutes) {
               DJs = API.getDJs();
               if (DJs.length > 0 && DJs[0].id !== user.getUser().id) {
-                API.sendChat("@" + user.getUser().username + ", I Have given you 1 warning. Please stay active by chatting.");
+                API.sendChat("@" + user.getUser().username + ", Tu as été prévenu 1 fois. Merci de rester actif dans le chat.");
                 API.moderateRemoveDJ(id);
                 _results.push(user.warn());
               } else {
