@@ -65,11 +65,11 @@
       {
         interval: 7,
         offset: 0,
-        msg: "Le créateur de la salle est présent ! @Benoitdx9"
+        msg: "Pressione o botão bacana"
       }, {
         interval: 5,
         offset: 0,
-        msg: "Merci de rester actif dans le chat quand vous êtes inscrits dans la liste, les AFK de plus d'une heure en seront retirés!"
+        msg: ""
       }
     ];
 
@@ -369,7 +369,7 @@
     myname = me.username;
     currentversion = "1.0";
     log("TastycatBOT SuperEdit " + currentversion + " started");
-    return API.sendChat("Tremblez, " + myname + " est là !");
+    return API.sendChat("" + myname + "");
   };
 
   populateUserData = function() {
@@ -415,7 +415,7 @@
           secsLastActive = timeSinceLastActivity / 1000;
           if (user.getWarningCount() === 0) {
             user.warn();
-            _results.push(API.sendChat("@" + user.getUser().username + ", Je ne t'ai pas vu dans le chat depuis 1h, es-tu AFK ? Si tu ne donnes aucune réponse tu seras retiré de la liste DJ."));
+            _results.push(API.sendChat("@" + user.getUser().username + ", Eu não vi você falar por mais de uma hora, se você não mostrar alguma atividade, eu irei removê-lo"));
           } else if (user.getWarningCount() === 1) {
             lastWarned = user.getLastWarning();
             timeSinceLastWarning = now.getTime() - lastWarned.getTime();
@@ -423,7 +423,7 @@
             if (timeSinceLastWarning > twoMinutes) {
               DJs = API.getDJs();
               if (DJs.length > 0 && DJs[0].id !== user.getUser().id) {
-                API.sendChat("@" + user.getUser().username + ", Tu as été prévenu 1 fois. Merci de rester actif dans le chat.");
+                API.sendChat("@" + user.getUser().username + ", Eu lhe dei um aviso, por favor, favor se mantenha ativo no bate-papo");
                 API.moderateRemoveDJ(id);
                 _results.push(user.warn());
               } else {
@@ -693,8 +693,8 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Any type of Music is allowed here. Including Dubstep, Complextro, Drum and Bass, Glitch-Hop, Trap, ";
-      msg += "Garage, Breakbeat, Hardstyle, Moombahton, HEAVY EDM, House, Electro, Trance and ALL other Genres!!";
+      msg = "Qualquer tipo de Rock é permitido aqui.";
+      msg += "";
       return API.sendChat(msg);
     };
 
@@ -753,7 +753,7 @@
     roomHelpCommand.prototype.functionality = function() {
       var msg1, msg2;
 
-      msg1 = "Welcome to Swiss Cheese and Maple Syrup! Create a playlist and populate it with songs from either YouTube or Soundcloud.  ";
+      msg1 = "Welcome to the room Create a playlist and populate it with songs from either YouTube or Soundcloud.  ";
       msg1 += "Click the 'Join Waitlist' button and wait your turn to play music. All forms of Music are allowed.";
       msg2 = "Play good quality music.  ";
       msg2 += "Ask staff if you're unsure about your song choice";
